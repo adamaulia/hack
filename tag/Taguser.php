@@ -12,7 +12,7 @@ include ('header.php');
 		</form>
 	</div>
 	<div id="getktp">
-		<table id="viewktp" border="1">
+		<table class="table">
 		<thead>
 			<th>NIK</th>
 			<th>tag_id</th>
@@ -26,44 +26,60 @@ include ('header.php');
 			<th>pekerjaan</th>
 			<th>status perkawinan</th>
 		</thead>
-		<tbody id="body">
+		<tbody id="viewktp">
 		<tbody>
 		</table>
 	</div>
 	<script>
 	function getData(){
 		$(document).ready(function(){
-			$("#body").empty();
+
+			function validate_tag(selector){
+				var tag = $(selector).val();
+				if(tag.length == 14){
+					return true;
+				}else{
+					alert('Inputan Tag ID tidak valid');
+					return false;
+				}
+			}
+
+
+
+			$("#viewktp").empty();
 			var tag=$("#tag").val();
 			console.log(tag);
-			$.ajax({
-				url: "getTagKTP.php",
-				data: "tag="+tag,
-				type: "GET",
-				dataType: 'json',
-				success:function(out){
-					
-			var tr;
-					for (var i = 0; i < out.length; i++) {
-						tr = $('<tr/>');
-						tr.append("<td>" + out[i].NIK + "</td>");
-						tr.append("<td>" + out[i].tag_id + "</td>");
-						tr.append("<td>" + out[i].tempat + "</td>");
-						tr.append("<td>" + out[i].nama + "</td>");
-						tr.append("<td>" + out[i].alamat + "</td>");
-						tr.append("<td>" + out[i].kewarganegaraan + "</td>");
-						tr.append("<td>" + out[i].masa_berlaku + "</td>");
-						tr.append("<td>" + out[i].jenis_agama + "</td>");
-						tr.append("<td>" + out[i].jenis_kelamin + "</td>");
-						tr.append("<td>" + out[i].jenis_pekerjaan + "</td>");
-						tr.append("<td>" + out[i].status_perkawinan + "</td>");
-						$('#viewktp').append(tr);
-					} 
-					
-				}
-			
-			});
+			if(validate_tag('#tag')){
+				$.ajax({
+					url: "getTagKTP.php",
+					data: "tag="+tag,
+					type: "GET",
+					dataType: 'json',
+					success:function(out){
+						
+						var tr;
+						$("#viewktp").empty();
+						for (var i = 0; i < out.length; i++) {
+							tr = $('<tr/>');
+							tr.append("<td>" + out[i].NIK + "</td>");
+							tr.append("<td>" + out[i].tag_id + "</td>");
+							tr.append("<td>" + out[i].tempat + "</td>");
+							tr.append("<td>" + out[i].nama + "</td>");
+							tr.append("<td>" + out[i].alamat + "</td>");
+							tr.append("<td>" + out[i].kewarganegaraan + "</td>");
+							tr.append("<td>" + out[i].masa_berlaku + "</td>");
+							tr.append("<td>" + out[i].jenis_agama + "</td>");
+							tr.append("<td>" + out[i].jenis_kelamin + "</td>");
+							tr.append("<td>" + out[i].jenis_pekerjaan + "</td>");
+							tr.append("<td>" + out[i].status_perkawinan + "</td>");
+							$('#viewktp').append(tr);
+						} 
+						
+					}
+				
+				});
 		 
+			}
 		document.getElementById('tag').value='';
 	});
 	}
