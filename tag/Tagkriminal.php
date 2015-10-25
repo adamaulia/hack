@@ -1,11 +1,31 @@
 <?php
-header('Access-Control-Allow-Origin: *');
 include ('connect.php');
+$title = 'input riwayat kriminalitas';
+include ('header.php');
 ?>
-<html>
-<head>
-	<title>record kriminalitas</title>
-	<script type="text/javascript" src="../asset/jquery-1.11.3.min.js"></script>
+	<h1> view by civil </h1>
+	<h1>record kriminalitas</h1>
+	<div id="form">
+		<form>
+			<label>search your id :</label>
+				<input type="text" id="tag" placeholder="input tag ktp">
+				<input type="button" id="search" value="search" onclick="getData()">
+		</form>
+	</div>
+	<div id="getktp">
+		<table id="viewdata" border="1">
+		<thead>
+			<th>NIK</th>
+			<th>jenis pelanggaran</th>
+			<th>tag id</th>
+			<th>nama pelanggar</th>
+			<th>lokasi pengadilan</th>
+			<th>kota pengadilan</th>
+		</thead>
+		<tbody id="body">
+		<tbody>
+		</table>
+	</div>
 	<script>
 		function getData(){
 		$(document).ready(function(){
@@ -41,31 +61,5 @@ include ('connect.php');
 		}
 	
 	</script>
-</head>
-
-<body>
-	<h1> view by civil </h1>
-	<h1>record kriminalitas</h1>
-	<div id="form">
-		<form>
-			<label>search your id :</label>
-				<input type="text" id="tag" placeholder="input tag ktp">
-				<input type="button" id="search" value="search" onclick="getData()">
-		</form>
-	</div>
-	<div id="getktp">
-		<table id="viewdata" border="1">
-		<thead>
-			<th>NIK</th>
-			<th>jenis pelanggaran</th>
-			<th>tag id</th>
-			<th>nama pelanggar</th>
-			<th>lokasi pengadilan</th>
-			<th>kota pengadilan</th>
-		</thead>
-		<tbody id="body">
-		<tbody>
-		</table>
-	</div>
 </body>
 </html>

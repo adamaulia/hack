@@ -1,11 +1,30 @@
 <?php
 include ('connect.php');
-
+$title = 'input riwayat kriminalitas';
+include ('header.php');
 ?>
-<html>
-<head>
-	<title>input riwayat kriminalitas</title>
-	<script type="text/javascript" src="../asset/jquery-1.11.3.min.js"></script>
+	<h1>input riwayat kriminalitas dengan menggunakan tag ktp</h1>
+	<div id="input">
+		<form>
+			<label>input tag:</label>
+			<input type="text" id="tag" placeholder="input nomor tag ktp">
+			</br>
+			<label>jenis kriminalitas:</label>
+			</br>
+			<select name="kriminal" id="kriminal">
+				<option value="">-- Select --</option>
+			</select>
+			</br>
+			<label>lokasi pengadilan:</label>
+			</br>
+			<select name="pengadilan" id="pengadilan">
+				<option value="">-- Select --</option>
+			</select>
+			</br>
+			</br>
+			<input type="button" id="submit" value="input">
+		</form>
+	</div>
 	<script>
 		$(document).ready(function(){
 				var crime;
@@ -60,31 +79,6 @@ include ('connect.php');
 			
 		});
 	</script>
-</head>
-
-<body>
-	<h1>input riwayat kriminalitas dengan menggunakan tag ktp</h1>
-	<div id="input">
-		<form>
-			<label>input tag:</label>
-			<input type="text" id="tag" placeholder="input nomor tag ktp">
-			</br>
-			<label>jenis kriminalitas:</label>
-			</br>
-			<select name="kriminal" id="kriminal">
-				<option value="">-- Select --</option>
-			</select>
-			</br>
-			<label>lokasi pengadilan:</label>
-			</br>
-			<select name="pengadilan" id="pengadilan">
-				<option value="">-- Select --</option>
-			</select>
-			</br>
-			</br>
-			<input type="button" id="submit" value="input">
-		</form>
-	</div>
 </body>
 
 </html>

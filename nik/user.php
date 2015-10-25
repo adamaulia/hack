@@ -1,11 +1,33 @@
 <?php
 include ('connect.php');
-
+$title = 'input riwayat kriminalitas';
+include ('header.php');
 ?>
-<html>
-<head>
-<title> ktp user</title>
-	<script type="text/javascript" src="../asset/jquery-1.11.3.min.js"></script>
+	<h1> view by civil </h1>
+	<div id="search">
+		<form>
+			<label>search your id :</label>
+				<input type="text" id="nik" placeholder="input nomor ktp">
+				<input type="button" id="search" value="search" onclick="getData()">
+		</form>
+	</div>
+	<div id="getktp">
+		<table id="viewktp" border="1">
+		<thead>
+			<th>NIK</th>
+			<th>TTL</th>
+			<th>nama</th>
+			<th>alamat</th>
+			<th>tatus kepemilikan</th>
+			<th>masa berlaku</th>
+			<th>agama</th>
+			<th>jenis kelamin</th>
+			<th>pekerjaan</th>
+			<th>status perkawinan</th>
+		</thead>
+
+		</table>
+	</div>
 	<script>
 	function getData(){
 		$(document).ready(function(){
@@ -44,33 +66,6 @@ include ('connect.php');
 	}
 	
 	</script>
-</head>
-<body>
-	<h1> view by civil </h1>
-	<div id="search">
-		<form>
-			<label>search your id :</label>
-				<input type="text" id="nik" placeholder="input nomor ktp">
-				<input type="button" id="search" value="search" onclick="getData()">
-		</form>
-	</div>
-	<div id="getktp">
-		<table id="viewktp" border="1">
-		<thead>
-			<th>NIK</th>
-			<th>TTL</th>
-			<th>nama</th>
-			<th>alamat</th>
-			<th>tatus kepemilikan</th>
-			<th>masa berlaku</th>
-			<th>agama</th>
-			<th>jenis kelamin</th>
-			<th>pekerjaan</th>
-			<th>status perkawinan</th>
-		</thead>
-
-		</table>
-	</div>
 </body>
 
 </html>
